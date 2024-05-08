@@ -13,6 +13,20 @@ extensions, outlier elimination and report creation.
 
 Aropä was provided on a wholly voluntary basis by two academics (Prof. Helen Purchase and Dr. John Hamer).
 
+# Running w/ Docker
+
+1. Clone this repository
+    ```git clone https://github.com/JohnHamer-Glasgow/aropa.git```
+2. Make that directory the current one
+    ```cd aropa```
+3. Build the image
+     ```docker compose build```
+4. Copy the docker config to local config.  Make any changes you like to
+   app/docker-config.php (it should run without any changes)
+     ```cp app/docker-config.php app/local-config.php```
+5. Start the container
+     ```docker compose up```
+
 ## Selected Publications
 * Purchase, H.C. and Hamer, J (2018). Perspectives on peer-review: eight years of Aropä, 
   _Assessment & Evaluation in Higher Education_ 43(3), pp473-487, https://www.tandfonline.com/doi/abs/10.1080%2F02602938.2017.1359819

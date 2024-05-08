@@ -2,19 +2,31 @@ version: "3.9"
 services:
   php-apache:
     ports:
-      - "80:80"
+      - "8080:80"
     build: './build/php'
     volumes:
       - ./app:/var/www/html
+    environment:
+      DB_HOST: "mysql"
+      DB_NAME: "aropa"
+      DB_USER: "aropa"
+      DB_PASSWORD: "aropa"
+      DB_PORT: 3306
+      ADMIN_EMAIL: "Your@Address.here"
   mysql:
     ports:
       - "3306:3306"
-    build: './build/mysql'
+    build:
+      context: './'
+      dockerfile: './build/mysql/Dockerfile'
     environment:
       MYSQL_ROOT_PASSWORD: "aropa"
+      MYSQL_USER: "aropa"
+      MYSQL_PASSWORD: "aropa"
       MYSQL_DATABASE: "aropa"
     volumes:
       - dbData:/var/lib/mysql
+      - ${PWD}/app/tables.sql:/docker-entrypoint-initdb.d/tables.sql
 volumes:
   app:
   dbData:
